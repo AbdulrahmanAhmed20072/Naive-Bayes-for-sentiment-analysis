@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from nltk.tokenize import TweetTokenizer
 
-from utils_w2 import process_tweet, lookup
+from utils import process_tweet, lookup
 
 nltk.download('stopwords')
 nltk.download('twitter_samples')
