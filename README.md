@@ -1,17 +1,99 @@
-# Naive-Bayes-for-sentiment-analysis
-This project implements a Naive Bayes classifier for sentiment analysis on Twitter data. It processes tweets, calculates word frequencies, and predicts sentiment (positive or negative) using probabilistic modeling. The project includes training and testing on a dataset of positive and negative tweets."
+# Twitter Sentiment Analysis - Naive Bayes Implementation
 
-## Features
-- **Tweet Processing**: Tokenization, stopword removal, and stemming.
-- **Naive Bayes Classifier**: Trains a model to predict sentiment based on word frequencies.
-- **Testing**: Evaluates the model's accuracy on a test dataset.
-- **Word Analysis**: Provides tools to analyze the most positive and negative words.
+This notebook implements sentiment analysis on Twitter data using Naive Bayes classification.
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/AbdulrahmanAhmed20072/Naive-Bayes-for-sentiment-analysis.git
-2. pip install nltk numpy pandas
-3. import nltk
-   nltk.download('stopwords')
-   nltk.download('twitter_samples')
+## Overview
+
+The project includes:
+- A Naive Bayes classifier for tweet sentiment analysis
+- Tweet preprocessing and tokenization
+- Model training and evaluation
+- Word sentiment analysis utilities
+
+## Requirements
+
+- Python 3.x
+- NLTK
+- NumPy
+- Pandas
+
+## Setup
+
+```python
+# Import required libraries
+import nltk
+from nltk.corpus import stopwords, twitter_samples
+import numpy as np
+import pandas as pd
+from nltk.tokenize import TweetTokenizer
+
+# Download required NLTK data
+nltk.download('stopwords')
+nltk.download('twitter_samples')
+```
+
+## Data Preparation
+
+The dataset consists of:
+- Training data: 8000 tweets (4000 positive, 4000 negative)
+- Test data: Remaining tweets from Twitter samples
+- Binary labels (1 for positive, 0 for negative)
+
+## Main Functions
+
+### Tweet Processing
+```python
+custom_tweet = "RT @Twitter @chapagain Hello There! Have a great day. :) #good #morning http://chapagain.com.np"
+processed_tweet = process_tweet(custom_tweet)
+```
+
+### Frequency Counting
+```python
+freqs = count_tweets(tweets, ys)
+```
+
+### Model Training
+```python
+logprior, loglikelihood = train_naive_bayes(x_train, y_train, freqs)
+```
+
+### Prediction
+```python
+prediction = naive_bayes_predict(tweet, loglikelihood, logprior)
+```
+
+### Model Evaluation
+```python
+accuracy = test_naive_bayes(x_test, y_test, loglikelihood, logprior)
+```
+
+## Additional Features
+
+### Word Sentiment Ratio
+```python
+ratio = get_ratio(freqs, word)
+```
+
+### Threshold-based Word Filtering
+```python
+word_list = get_words_by_threshold(freqs, label, threshold)
+```
+
+## Model Details
+
+The implementation includes:
+- Laplace smoothing for handling unseen words
+- Log probability calculations to prevent underflow
+- Word frequency analysis for sentiment strength
+
+## Usage Example
+
+```python
+# Process a custom tweet
+custom_tweet = "I am happy"
+processed = process_tweet(custom_tweet)
+
+# Make prediction
+result = naive_bayes_predict(custom_tweet, loglikelihood, logprior)
+print(f'{custom_tweet} -> {result:.2f}')
+```
