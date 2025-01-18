@@ -10,7 +10,7 @@ This project implements a Naive Bayes classifier for sentiment analysis on Twitt
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/nlp-sentiment-analysis.git
+   git clone https://github.com/AbdulrahmanAhmed20072/Naive-Bayes-for-sentiment-analysis.git
 2. pip install nltk numpy pandas
 3. import nltk
    nltk.download('stopwords')
